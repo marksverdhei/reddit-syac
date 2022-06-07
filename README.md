@@ -1,9 +1,15 @@
-# reddit-syac
-All code used to scrape, filter, extract and build the reddit-syac dataset.
+# Reddit SYAC dataset  
 
-# Stay tuned  
+Reddit SYAC (Saved you a click) is an abstractive title answering dataset consisting in total of 8608 examples.  
 
-Dataset code will soon be released  
+This repository contains all the code used to fetch, extract and assemble the Reddit SYAC dataset.  
 
-In the meantime, the public variant on of the Reddit SYAC dataset, which contains titles, answers and URLs to the articles
-is available here: https://huggingface.co/datasets/marksverdhei/reddit-syac-urls
+## Public variant  
+
+The public dataset variant consists of reddit post ids, titles, and urls to archived pages for clickbait articles.  
+The two archiving pages used are web.archive and archive.today variants. These pages require different methods for scraping, 
+so we have one script for each domain.  
+
+## Private variant  
+
+After running the scripts to collect, extract, assemble and split the dataset, you should have a train set of 7608 examples, a validation set of 500 examples, and a test set of 500 examples. The test set is manually curated, so it is important to ensure that you get the correct test.  
