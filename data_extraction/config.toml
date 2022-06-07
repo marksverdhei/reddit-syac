@@ -1,0 +1,17 @@
+[datapaths]
+dataset_path = "../data/syac_dataset.tsv"
+
+[clean_dataset]
+min_len_chars = 100
+max_len_chars = 50000
+profanity_annotations_path = "../data/profanity_targets.tsv"
+dirty_dataset_path = "../data/syac_dataset_unprocessed.tsv"
+clean_dataset_path = "../data/syac_dataset.tsv"
+
+
+[split_dataset]
+train_val_test_id_path = "../data/train_val_test_ids.txt"
+train_val_test_id_local_path = "../data/train_val_test_ids_local.txt"
+train_path = "../data/train_set.tsv"
+val_path = "../data/val_set.tsv"
+test_path = "../data/test_set.tsv"
