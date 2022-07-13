@@ -14,6 +14,15 @@ DATA_PATH = "data/html/archive_today"
 captcha_content = "Completing the CAPTCHA proves you are a human"
 
 
+def get_archivetoday_df():
+    """
+    Returns the subset of the reddit syac dataset where the URLs that do not contain web.archive
+    """
+    splits = ("train", "validation", "test")
+    df = pd.concat((pd.read_csv(f"data/public/{s}_urls.csv", index_col=0) for s in splits))
+    return df[df.url.map(lambda url: "web.archive" not in url)]
+
+
 def get_downloaded_document_ids():
     "Removes extensions from html files: abc123.html -> abc123"
     return [i[:-5] for i in os.listdir(DATA_PATH)]
@@ -76,7 +85,7 @@ def main():
             os.mkdir(path)
 
 
-    data = pd.read_csv("data/intermediate/archivetoday_urls.tsv", index_col=0, sep="\t")
+    data = get_archivetoday_df()
     local_doc_ids = get_downloaded_document_ids()
     data.drop(local_doc_ids, inplace=True, errors="ignore")
     download_pages(data)
